@@ -7,15 +7,19 @@ package com.javashitang.jvm;
 public class Student {
 
     private String name;
-    private static int age = 10;
+    private int age = 10;
+    private static int gender = 1;
 
-    static {
-        System.out.println("static");
+    {
+        System.out.println("构造代码块");
     }
 
-    public Student(String name, int age) {
-        this.name = name;
-        this.age = age;
+    static {
+        System.out.println("静态代码块");
+    }
+
+    public Student() {
+        System.out.println("构造函数");
     }
 
     public String getName() {
