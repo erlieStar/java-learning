@@ -12,4 +12,8 @@ public class Test {
         int c = 300;
         return (a + b) * c;
     }
+
+    public int getSum(int a, int b) {
+        return a + b;
+    }
 }
