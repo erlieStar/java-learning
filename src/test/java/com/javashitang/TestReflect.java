@@ -23,4 +23,16 @@ public class TestReflect {
         System.out.println(result);
     }
 
+    @Test
+    public void test() {
+        try {
+            int a = 100 / 0;
+        } catch (Exception e) {
+            throw new NullPointerException();
+        } finally {
+            System.out.println("finally");
+        }
+        System.out.println("end");
+    }
+
 }
