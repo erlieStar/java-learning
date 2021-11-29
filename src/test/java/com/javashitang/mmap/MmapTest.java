@@ -83,4 +83,14 @@ public class MmapTest {
         fileChannel.force(false);
     }
 
+    @Test
+    public void test2() {
+        long unit = 1 * 1024 * 1024 * 1024;
+        for (int i = 1; i <= 3; i++) {
+            long item = i * unit;
+            String result = String.format("%020d", item);
+            System.out.println(result);
+        }
+    }
+
 }
