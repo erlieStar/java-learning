@@ -114,9 +114,9 @@ public class CompletableFutureDemo {
     }
 
     public void sleepRandom() {
-        Random random = new Random(5);
+        Random random = new Random();
         try {
-            TimeUnit.SECONDS.sleep(random.nextInt());
+            TimeUnit.SECONDS.sleep(random.nextInt(6));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -371,5 +371,33 @@ public class CompletableFutureDemo {
         CompletableFuture.allOf(future1, future2).thenRun(() -> {
             System.out.println("老司机，发车");
         });
+    }
+
+    public CompletableFuture<Integer> getResult() {
+        CompletableFuture<Integer> result1 = new CompletableFuture();
+        CompletableFuture<Integer> result2 = new CompletableFuture();
+        new Thread(() -> {
+            sleepRandom();
+            result1.complete(1);
+        }).start();
+
+        new Thread(() -> {
+            sleepRandom();
+            result2.complete(2);
+        }).start();
+
+        return result1.thenCombine(result2, (num1, num2) -> {
+            return num1 + num2;
+        });
+    }
+
+    @Test
+    public void test21() throws ExecutionException, InterruptedException {
+        long start = System.currentTimeMillis();
+        CompletableFuture<Integer> future = getResult();
+        // 线程阻塞在这里等待结果，直到等到结果3
+        System.out.println(future.get());
+        // 2145
+        System.out.println(System.currentTimeMillis() - start);
     }
 }
