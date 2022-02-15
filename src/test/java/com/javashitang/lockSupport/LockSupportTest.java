@@ -23,4 +23,19 @@ public class LockSupportTest {
         thread.interrupt();
         TimeUnit.MICROSECONDS.sleep(20);
     }
+
+    @Test
+    public void test2() throws InterruptedException {
+        Thread thread = new Thread(() -> {
+            System.out.println("1 " + System.currentTimeMillis());
+            LockSupport.park();
+            System.out.println("2 " + System.currentTimeMillis());
+        });
+
+        thread.start();
+
+        TimeUnit.SECONDS.sleep(1);
+
+        LockSupport.unpark(thread);
+    }
 }
