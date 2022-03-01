@@ -2,6 +2,7 @@ package com.javashitang.completableFuture;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -399,5 +400,30 @@ public class CompletableFutureDemo {
         System.out.println(future.get());
         // 2145
         System.out.println(System.currentTimeMillis() - start);
+    }
+
+
+    @Test
+    public void test30() throws ExecutionException, InterruptedException, IOException {
+        CompletableFuture<Integer> completableFuture = new CompletableFuture();
+
+        new Thread(() -> {
+            try {
+                System.out.println("开始取");
+                System.out.println(completableFuture.get());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        TimeUnit.SECONDS.sleep(2);
+
+        new Thread(() -> {
+            System.out.println("设置值");
+            completableFuture.complete(10);
+        }).start();
+        System.in.read();
     }
 }
