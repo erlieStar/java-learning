@@ -10,9 +10,9 @@ public class TestService {
         long expireTime = 1000L;
         String value = getFromRedis(key);
         if (value == null) {
-            if (LockUtil.tryLock(lockKey, lockValue, expireTime)) {
+            if (LockUtil.lock(lockKey, lockValue, expireTime)) {
                 // 从数据库取值并放到redis中
-                LockUtil.releaseLock(lockKey, lockValue);
+                LockUtil.unlock(lockKey, lockValue);
             } else {
                 // sleep一段时间再从缓存中拿
                 Thread.sleep(100);

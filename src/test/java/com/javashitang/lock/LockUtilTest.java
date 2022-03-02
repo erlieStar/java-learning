@@ -16,7 +16,7 @@ public class LockUtilTest {
         String lockValue = String.valueOf(System.currentTimeMillis());
 
         new Thread(() -> {
-            if (LockUtil.tryLock(lockKey, lockValue, 10000)) {
+            if (LockUtil.lock(lockKey, lockValue, 10000)) {
                 System.out.println("1获取锁");
                 try {
                     TimeUnit.SECONDS.sleep(5);
@@ -24,7 +24,7 @@ public class LockUtilTest {
                     e.printStackTrace();
                 } finally {
                     System.out.println("1释放锁");
-                    LockUtil.releaseLock(lockKey, lockValue);
+                    LockUtil.unlock(lockKey, lockValue);
                 }
             } else {
                 System.out.println("1没有拿到锁");
@@ -33,7 +33,7 @@ public class LockUtilTest {
 
 
         new Thread(() -> {
-            if (LockUtil.tryLock(lockKey, lockValue, 3000)) {
+            if (LockUtil.lock(lockKey, lockValue, 3000)) {
                 System.out.println("2获取锁");
                 try {
                     TimeUnit.SECONDS.sleep(2);
@@ -41,7 +41,7 @@ public class LockUtilTest {
                     e.printStackTrace();
                 } finally {
                     System.out.println("2释放锁");
-                    LockUtil.releaseLock(lockKey, lockValue);
+                    LockUtil.unlock(lockKey, lockValue);
                 }
             } else {
                 System.out.println("2没有拿到锁");
