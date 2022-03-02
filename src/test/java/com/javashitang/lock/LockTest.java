@@ -19,35 +19,35 @@ public class LockTest {
         ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
         Thread thread1 = new Thread(() -> {
             readLock.lock();
-            System.out.println("thread1 lock " + System.currentTimeMillis());
+            System.out.println("thread1 read lock " + System.currentTimeMillis());
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("thread1 unlock " + System.currentTimeMillis());
+            System.out.println("thread1 read unlock " + System.currentTimeMillis());
             readLock.unlock();
         });
         Thread thread2 = new Thread(() -> {
             readLock.lock();
-            System.out.println("thread2 lock " + System.currentTimeMillis());
+            System.out.println("thread2 read lock " + System.currentTimeMillis());
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("thread2 unlock " + System.currentTimeMillis());
+            System.out.println("thread2 read unlock " + System.currentTimeMillis());
             readLock.unlock();
         });
         Thread thread3 = new Thread(() -> {
             writeLock.lock();
-            System.out.println("thread3 lock " + System.currentTimeMillis());
+            System.out.println("thread3 write lock " + System.currentTimeMillis());
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("thread3 unlock " + System.currentTimeMillis());
+            System.out.println("thread3 write unlock " + System.currentTimeMillis());
             writeLock.unlock();
         });
         thread1.start();
