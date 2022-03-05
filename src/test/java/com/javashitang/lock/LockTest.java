@@ -3,6 +3,7 @@ package com.javashitang.lock;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -59,6 +60,6 @@ public class LockTest {
 
     @Test
     public void test2() {
-
+        System.out.println(LocalDateTime.now().minusDays(7));
     }
 }
