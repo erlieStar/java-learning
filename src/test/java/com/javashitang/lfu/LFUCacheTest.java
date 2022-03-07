@@ -2,17 +2,15 @@ package com.javashitang.lfu;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author lilimin
  * @since 2021-01-24
  */
-public class LfuCacheTest {
+public class LFUCacheTest {
 
     @Test
     public void get() {
-        LfuCache<String, String> lfuCache = new LfuCache(2);
+        LFUCache<String, String> lfuCache = new LFUCache(2);
         lfuCache.put("1", "1");
         lfuCache.put("2", "2");
         // 1
