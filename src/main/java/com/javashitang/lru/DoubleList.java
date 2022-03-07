@@ -47,7 +47,7 @@ public class DoubleList {
             if (tempHead != tempTail) {
                 Object key = tempHead.key;
                 Object value = tempHead.value;
-                str += "{" + key + " : " + value + "}";
+                str += "(" + key + " = " + value + ") ";
             }
         }
         return str;

@@ -7,12 +7,12 @@ import java.util.Map;
  * @author lilimin
  * @since 2021-01-17
  */
-public class LruCache<K, V> extends LinkedHashMap<K, V> {
+public class LRUCacheV2<K, V> extends LinkedHashMap<K, V> {
 
     private int cacheSize;
 
 
-    public LruCache(int cacheSize) {
+    public LRUCacheV2(int cacheSize) {
         /**
          * initialCapacity: 初始容量大小
          * loadFactor: 负载因子

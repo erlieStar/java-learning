@@ -6,12 +6,12 @@ import org.junit.Test;
  * @author lilimin
  * @since 2021-01-17
  */
-public class LruCacheTest {
+public class LRUCacheV2Test {
 
     @Test
     public void removeEldestEntry() {
 
-        LruCache<String, String> lruCache = new LruCache(3);
+        LRUCacheV2<String, String> lruCache = new LRUCacheV2(3);
         lruCache.put("1", "1");
         lruCache.put("2", "2");
         lruCache.put("3", "3");

@@ -8,13 +8,13 @@ import java.util.Map;
  * @author lilimin
  * @since 2021-01-17
  */
-public class MyLruCache<K, V> {
+public class LRUCache<K, V> {
 
     private int capacity;
     private DoubleList doubleList;
     private Map<K, ListNode> map;
 
-    public MyLruCache(int capacity) {
+    public LRUCache(int capacity) {
         this.capacity = capacity;
         map = new HashMap<>();
         doubleList = new DoubleList();
