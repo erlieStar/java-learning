@@ -22,19 +22,16 @@ public class DoubleList {
     }
 
     public void addLast(ListNode node) {
+        tail.pre.next = node;
+        node.next = tail;
         node.pre = tail.pre;
         tail.pre = node;
-        node.pre.next = node;
-        node.next = tail;
     }
 
     public ListNode removeFirst() {
-        if (head.next == tail) {
-            return null;
-        }
-        ListNode first = head.next;
-        remove(first);
-        return first;
+        ListNode removeNode = head.next;
+        remove(removeNode);
+        return removeNode;
     }
 
     @Override
