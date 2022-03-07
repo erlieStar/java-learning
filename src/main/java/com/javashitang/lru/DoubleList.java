@@ -6,8 +6,8 @@ package com.javashitang.lru;
  */
 public class DoubleList {
 
-    private ListNode head;
-    private ListNode tail;
+    ListNode head;
+    ListNode tail;
 
     public DoubleList() {
         head = new ListNode();

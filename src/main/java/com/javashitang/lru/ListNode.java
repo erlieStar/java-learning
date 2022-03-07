@@ -1,18 +1,20 @@
 package com.javashitang.lru;
 
+
 /**
  * @author lilimin
  * @since 2021-01-18
  */
-public class ListNode<K, V> {
-    K key;
-    V value;
+public class ListNode {
+
+    int key;
+    int value;
     ListNode pre;
     ListNode next;
 
     public ListNode() {}
 
-    public ListNode(K key, V value) {
+    public ListNode(int key, int value) {
         this.key = key;
         this.value = value;
     }
