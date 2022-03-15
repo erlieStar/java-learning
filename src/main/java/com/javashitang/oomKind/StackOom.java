@@ -1,4 +1,4 @@
-package com.javashitang.oom;
+package com.javashitang.oomKind;
 
 /**
  * @author lilimin
@@ -8,7 +8,7 @@ public class StackOom {
 
     private static int stackLength = 0;
 
-    // -Xss2M
+    // -Xss1M
     public static void main(String[] args) {
         StackOom stackOom = new StackOom();
         try {

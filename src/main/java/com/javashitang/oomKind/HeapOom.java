@@ -1,4 +1,4 @@
-package com.javashitang.oom;
+package com.javashitang.oomKind;
 
 import com.google.common.collect.Lists;
 
@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class HeapOom {
 
-    private static final int NUM = 1024;
+    private static final int _1MB = 1024 * 1024;
 
     // -Xms20m -Xmx20m
     public static void main(String[] args) {
         List<byte[]> list = Lists.newArrayList();
-        for (int i = 0; i < NUM; i++) {
-            list.add(new byte[NUM * NUM]);
+        while (true) {
+            list.add(new byte[_1MB]);
         }
     }
 }

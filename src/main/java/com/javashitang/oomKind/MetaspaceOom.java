@@ -1,4 +1,4 @@
-package com.javashitang.oom;
+package com.javashitang.oomKind;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -14,6 +14,9 @@ public class MetaspaceOom {
 
     // -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=10m
     public static void main(String[] args) {
+
+        long counter = 0;
+
         while (true) {
             Enhancer enhancer = new Enhancer();
             enhancer.setSuperclass(Car.class);
@@ -22,7 +25,7 @@ public class MetaspaceOom {
                 @Override
                 public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
                     if (method.getName().equals("run")) {
-                        System.out.println("启动汽车之前之前先进行安全检查");
+                        System.out.println("启动汽车之前先进行安全检查");
                         return methodProxy.invokeSuper(o, objects);
                     } else {
                         return methodProxy.invokeSuper(o, objects);
@@ -32,6 +35,8 @@ public class MetaspaceOom {
 
             Car car = (Car) enhancer.create();
             car.run();
+
+            System.out.println("创建了 " + (++counter) + " 个子类");
         }
     }
 
