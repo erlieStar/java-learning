@@ -4,6 +4,10 @@ import org.junit.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TestReflect {
 
@@ -33,6 +37,23 @@ public class TestReflect {
             System.out.println("finally");
         }
         System.out.println("end");
+    }
+
+    @Test
+    public void test2() throws ParseException {
+
+        DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date startDate = dateFormat1.parse("2022-04-01 00:00:00");
+
+        DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date endDate = dateFormat2.parse("2022-05-01 00:00:000");
+
+        System.out.println(valid(startDate, endDate));
+    }
+
+    public boolean valid(Date startDate, Date endDate) {
+        int days = (int) ((endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24));
+        return days > 31;
     }
 
 }
