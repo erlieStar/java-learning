@@ -1,11 +1,14 @@
 package com.javashitang.optional;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.javashitang.stream.Student;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author lilimin
@@ -47,5 +50,52 @@ public class OptionalTest {
             param.put(String.valueOf(i), result[i]);
         }
         System.out.println(param);
+    }
+
+    @Data
+    @AllArgsConstructor
+    public class Student {
+        private String name;
+        private Double num;
+    }
+
+    @Test
+    public void test3() {
+        Map<String, Student> map = Maps.newHashMap();
+        map.put("1", null);
+        map.put("2", new Student("a", 10D));
+        Student student = map.get("1");
+        Double num = Optional.ofNullable(student).map(Student::getNum).orElse(null);
+        System.out.println(num);
+        Double aDouble = Optional.ofNullable(map.get("2")).map(Student::getNum).orElse(num);
+        System.out.println(aDouble);
+    }
+
+    @Test
+    public void test4() {
+        Integer numa = 1;
+        Integer numb = 1;
+        if (Objects.equals(numa, numb)) {
+            System.out.println("yes");
+        }
+    }
+
+    @Test
+    public void test5() {
+        List<Student> list = Lists.newArrayList();
+        list.add(new Student("a", 10D));
+        list.add(new Student("a", 10D));
+        list.add(new Student("b", 10D));
+
+        List<Student> result = Lists.newArrayList();
+        Set<String> set = Sets.newHashSet();
+
+        for (Student student : list) {
+            if (set.add(student.getName())) {
+                result.add(student);
+            }
+        }
+
+        System.out.println(result);
     }
 }
