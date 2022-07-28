@@ -98,4 +98,18 @@ public class OptionalTest {
 
         System.out.println(result);
     }
+
+    @Test
+    public void test6() {
+        Student student = null;
+        String name = Optional.ofNullable(student).map(Student::getName).orElse(null);
+        System.out.println(name);
+    }
+
+    @Test
+    public void test7() {
+        Student student = new Student("a", 10.0);
+        String name = Optional.ofNullable(student).map(Student::getName).orElse(null);
+        System.out.println(name);
+    }
 }
