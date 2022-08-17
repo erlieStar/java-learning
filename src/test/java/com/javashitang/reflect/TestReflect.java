@@ -1,4 +1,4 @@
-package com.javashitang;
+package com.javashitang.reflect;
 
 import org.junit.Test;
 
