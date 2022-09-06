@@ -112,4 +112,13 @@ public class OptionalTest {
         String name = Optional.ofNullable(student).map(Student::getName).orElse(null);
         System.out.println(name);
     }
+
+    @Test
+    public void test8() {
+        Student student = new Student("a", 10.0);
+        Optional.ofNullable(student).ifPresent(item -> System.out.println(item.getName()));
+        System.out.println("---");
+        student = null;
+        Optional.ofNullable(student).ifPresent(item -> System.out.println(item.getName()));
+    }
 }
